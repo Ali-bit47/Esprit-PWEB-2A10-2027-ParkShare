@@ -113,7 +113,7 @@ PWEB – 2A10 | 2026–2027
 1. Clonez le repository :
 
 ```bash
-git clone https://github.com/<votre-utilisateur>/Esprit-PWEB-2A10-2027-ParkShare.git
+git clone https://github.com/Ali-bit47/Esprit-PWEB-2A10-2027-ParkShare.git
 cd Esprit-PWEB-2A10-2027-ParkShare
 ```
 
