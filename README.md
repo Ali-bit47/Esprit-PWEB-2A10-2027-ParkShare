@@ -9,18 +9,17 @@ ParkShare est une plateforme web intelligente qui connecte propriétaires, entre
 **Problématique :** à Tunis, il y a trop de voitures pour trop peu de places. Le centre-ville compte environ 10 700 places de stationnement structuré, et la capitale environ 32 000 places au maximum (source : La Presse de Tunisie, 12 janvier 2026), alors que de nombreux garages, cours et parkings d'entreprise restent vides une partie de la journée. Comment valoriser les places de parking privées inutilisées tout en facilitant le stationnement des automobilistes ?
 
 **Objectifs :**
-
 - Mettre en relation propriétaires, entreprises et automobilistes
 - Permettre la recherche et la réservation en ligne d'une place
-- Recommander les meilleures places grâce à l'IA
+- Recommander les meilleures places grâce à un système intelligent
 - Générer un revenu à partir des places inutilisées
 
 ## Features
 
 - **Recherche géolocalisée** et carte interactive des places autour de l'automobiliste
-- **Réservation en ligne** avec vérification de disponibilité et confirmation immédiate
-- **Paiement sécurisé** en dinars, avec factures et historique
-- **Recommandation par IA** : classement des places selon la localisation, le prix et la durée
+- **Réservation en ligne** avec vérification de disponibilité et confirmation
+- **Paiement** en dinars, avec factures et historique
+- **Recommandation intelligente** : classement des places selon la localisation, le prix et la durée
 - **Espace propriétaire** : annonces, tarifs, disponibilités et suivi des revenus
 - **Avis et favoris** sur les parkings
 - **Notifications et réclamations**
@@ -30,19 +29,23 @@ ParkShare est une plateforme web intelligente qui connecte propriétaires, entre
 ## Tech Stack
 
 ### Frontend
-
 - HTML5
 - CSS3
-- Leaflet et OpenStreetMap (cartographie)
+- JavaScript
+- Leaflet
+- OpenStreetMap
 
 ### Backend
+- PHP
+- PHP Orienté Objet (POO)
 
-- Django REST Framework
-- PostgreSQL et PostGIS
+### Database
+- MySQL
+- phpMyAdmin (gestion de la base de données)
 
 ## Architecture
 
-L'application suit une **architecture modulaire en cinq modules**, en plus du module Gestion des utilisateurs réalisé en commun par les cinq membres.
+L'application est développée selon une architecture modulaire en cinq modules, en plus du module Gestion des utilisateurs réalisé en commun par les cinq membres.
 
 | Membre | Module | Entités |
 |---|---|---|
@@ -53,8 +56,9 @@ L'application suit une **architecture modulaire en cinq modules**, en plus du mo
 | Elyes Hajji | Avis et favoris | Avis, Favori |
 | Omar Ben Ammar | Notifications et réclamations | Notification, Reclamation |
 
-**11 entités** au total, dont 1 commune et 10 réparties (deux par membre). Principales relations :
+**11 entités** au total, dont 1 commune et 10 réparties (deux par membre).
 
+Principales relations :
 - Parking 1–N PlaceParking
 - Disponibilite 1–N Reservation
 - Vehicule 1–N Paiement
@@ -62,20 +66,20 @@ L'application suit une **architecture modulaire en cinq modules**, en plus du mo
 
 **Acteurs :** Visiteur, Utilisateur, Propriétaire, Automobiliste, Administrateur et Passerelle de paiement (acteur externe).
 
-**Interfaces :**
+### Interfaces
 
-- **Front Office** : accueil avec recherche par lieu, date et durée, places recommandées par l'IA, carte interactive avec les prix en dinars, réservation en un clic.
+- **Front Office** : accueil avec recherche par lieu, date et durée, places recommandées, carte interactive avec les prix en dinars, réservation en un clic.
 - **Back Office** : tableau de bord d'administration avec menu latéral par module, indicateurs clés et graphiques.
 
 **Charte graphique :** Sable `#F6F3F0`, Corail `#E8623D`, Anthracite `#26323A`, Blanc cassé `#FFFDFB` ; typographies Space Grotesk (titres) et Inter (textes).
 
 ## Contributors
 
-- [Ali Lajnef](https://github.com/utilisateur1) – Module Parkings et places (Parking, PlaceParking)
-- [Malek Lassoued](https://github.com/utilisateur2) – Module Réservations et disponibilités (Reservation, Disponibilite)
-- [Amenallah Belgesmi](https://github.com/utilisateur3) – Module Paiements et véhicules (Paiement, Vehicule)
-- [Elyes Hajji](https://github.com/utilisateur4) – Module Avis et favoris (Avis, Favori)
-- [Omar Ben Ammar](https://github.com/utilisateur5) – Module Notifications et réclamations (Notification, Reclamation)
+- Ali Lajnef – Module Parkings et places (Parking, PlaceParking)
+- Malek Lassoued – Module Réservations et disponibilités (Reservation, Disponibilite)
+- Amenallah Belgesmi – Module Paiements et véhicules (Paiement, Vehicule)
+- Elyes Hajji – Module Avis et favoris (Avis, Favori)
+- Omar Ben Ammar – Module Notifications et réclamations (Notification, Reclamation)
 
 Le module Gestion des utilisateurs (entité Utilisateur) est réalisé en commun par les cinq membres.
 
@@ -88,7 +92,7 @@ PWEB – 2A10 | 2026–2027
 **Objectifs de développement durable (ODD) visés :**
 
 - ODD 8 : Travail décent et croissance économique (revenus complémentaires pour les propriétaires et les entreprises)
-- ODD 9 : Industrie, innovation et infrastructure (IA et géolocalisation pour mieux exploiter les parkings existants)
+- ODD 9 : Industrie, innovation et infrastructure (technologies intelligentes pour mieux exploiter les parkings existants)
 - ODD 11 : Villes et communautés durables (moins de voitures qui tournent, espace urbain mieux utilisé)
 - ODD 13 : Lutte contre les changements climatiques (moins de trajets de recherche, donc moins d'émissions de CO2)
 
@@ -96,9 +100,13 @@ PWEB – 2A10 | 2026–2027
 
 ### Prérequis
 
-- [Git](https://git-scm.com/)
-- [Python](https://www.python.org/) 3.10 ou supérieur
-- [PostgreSQL](https://www.postgresql.org/) avec l'extension [PostGIS](https://postgis.net/)
+- Git
+- PHP 8.0 ou supérieur
+- MySQL
+- phpMyAdmin
+- Un navigateur web moderne
+- VS Code (recommandé)
+- XAMPP (recommandé pour Apache et MySQL)
 
 ### Installation
 
@@ -109,47 +117,62 @@ git clone https://github.com/<votre-utilisateur>/Esprit-PWEB-2A10-2027-ParkShare
 cd Esprit-PWEB-2A10-2027-ParkShare
 ```
 
-2. Installez le backend (Django REST Framework) :
+2. Configurez l'environnement local avec XAMPP :
 
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate        # Windows : venv\Scripts\activate
-pip install -r requirements.txt
+- Installez XAMPP
+- Démarrez Apache et MySQL
+- Placez le projet dans le dossier `htdocs`
+
+3. Créez la base de données :
+
+- Accédez à phpMyAdmin via `http://localhost/phpmyadmin`
+- Créez une base de données nommée `parkshare`
+- Importez le fichier SQL du projet, si disponible
+
+4. Configurez la connexion à la base de données dans votre fichier de configuration PHP :
+
+```php
+<?php
+
+class Database
+{
+    private $host = "localhost";
+    private $dbname = "parkshare";
+    private $username = "root";
+    private $password = "";
+
+    private $connection;
+
+    public function connect()
+    {
+        try {
+            $this->connection = new PDO(
+                "mysql:host={$this->host};dbname={$this->dbname};charset=utf8mb4",
+                $this->username,
+                $this->password
+            );
+
+            $this->connection->setAttribute(
+                PDO::ATTR_ERRMODE,
+                PDO::ERRMODE_EXCEPTION
+            );
+
+            return $this->connection;
+        } catch (PDOException $e) {
+            die("Erreur de connexion : " . $e->getMessage());
+        }
+    }
+}
 ```
 
-3. Créez la base de données PostgreSQL avec PostGIS :
+5. Lancez le projet :
 
-```sql
-CREATE DATABASE parkshare;
-\c parkshare
-CREATE EXTENSION postgis;
+- Démarrez Apache et MySQL depuis XAMPP
+- Accédez au projet depuis votre navigateur :
+
+```text
+http://localhost/Esprit-PWEB-2A10-2027-ParkShare/
 ```
-
-4. Configurez la connexion à la base de données dans le fichier `.env` du backend (adaptez le nom du fichier et les valeurs) :
-
-```
-DB_NAME=parkshare
-DB_USER=postgres
-DB_PASSWORD=votre_mot_de_passe
-DB_HOST=localhost
-DB_PORT=5432
-```
-
-5. Appliquez les migrations et lancez le serveur :
-
-```bash
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver
-```
-
-6. Lancez le frontend (HTML et CSS) : ouvrez le fichier `frontend/index.html` dans votre navigateur, ou utilisez l'extension **Live Server** de VS Code (clic droit sur `index.html`, puis *Open with Live Server*).
-
-7. Accédez à l'application :
-
-- Frontend : `http://127.0.0.1:5500` avec Live Server (ou directement le fichier `index.html`)
-- API Django : `http://localhost:8000`
 
 ## Acknowledgments
 
