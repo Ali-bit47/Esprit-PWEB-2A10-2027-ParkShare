@@ -1,0 +1,8 @@
+# Fichiers à ne pas versionner
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+/vendor/
+/node_modules/
