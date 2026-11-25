@@ -273,10 +273,11 @@ Voir **[docs/GIT-WORKFLOW.md](docs/GIT-WORKFLOW.md)** : une branche par module, 
 
 | Membre | Module |
 |---|---|
-| Ali Lajnef | *à compléter* |
-| Malek Lassoued | *à compléter* |
-| Amenallah Belgesmi | *à compléter* |
-| Elyes Hajji | *à compléter* |
-| Omar Ben Ammar | *à compléter* |
+| Ali Lajnef |Module parking et reservations |
+| Malek Lassoued | Module forum et publications |
+| Amenallah Belgesmi |module materiels et categories |
+| Elyes Hajji |module entretien et traitements |
+| Omar Ben Ammar |Module evenements et reservations  |
+| mehdi greb |Module entretien materiels  |
 
 Le module **Gestion des utilisateurs** est réalisé en commun par les cinq membres.
