@@ -14,7 +14,6 @@ class AdminController
             $this->updateParkingStatus((int) $_POST['parking_id'], $_POST['action'] === 'validate' ? 'valide' : 'refuse');
         }
 
-        // Valeurs de démonstration à remplacer par des données issues des Models.
         $stats = [
             'utilisateurs' => '1 248',
             'parkings' => '312',

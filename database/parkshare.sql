@@ -1,12 +1,6 @@
--- ============================================================
--- ParkShare : base de données (module Gestion des utilisateurs)
--- À exécuter dans phpMyAdmin (onglet SQL) ou : mysql -u root < database/parkshare.sql
--- ============================================================
-
 CREATE DATABASE IF NOT EXISTS parkshare CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE parkshare;
 
--- Table des utilisateurs (entité commune aux 5 membres)
 CREATE TABLE IF NOT EXISTS users (
     id              INT AUTO_INCREMENT PRIMARY KEY,
     nom             VARCHAR(50)  NOT NULL,
@@ -14,11 +8,11 @@ CREATE TABLE IF NOT EXISTS users (
     username        VARCHAR(50)  NOT NULL UNIQUE,
     email           VARCHAR(150) NOT NULL UNIQUE,
     telephone       VARCHAR(20)  NOT NULL,
-    password        VARCHAR(255) NOT NULL,                       -- hachage bcrypt (password_hash), jamais en clair
+    password        VARCHAR(255) NOT NULL,
     role            ENUM('client', 'proprietaire', 'technicien', 'admin') NOT NULL DEFAULT 'client',
     statut          ENUM('actif', 'bloque') NOT NULL DEFAULT 'actif',
-    failed_attempts TINYINT UNSIGNED NOT NULL DEFAULT 0,         -- tentatives de connexion échouées
-    locked_until    DATETIME NULL,                               -- verrouillage temporaire anti force brute
+    failed_attempts TINYINT UNSIGNED NOT NULL DEFAULT 0,
+    locked_until    DATETIME NULL,
     last_login      DATETIME NULL,
     created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at      TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
@@ -26,7 +20,6 @@ CREATE TABLE IF NOT EXISTS users (
     INDEX idx_statut (statut)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Comptes de démonstration (mots de passe indiqués dans le README)
 INSERT INTO users (nom, prenom, username, email, telephone, password, role, statut, created_at) VALUES
 ('ParkShare', 'Admin',     'admin',      'admin@parkshare.tn',      '71000000', '$2y$10$7YCMqPyVauOHcFgsTLUtnOLLsxrbSikY3tnO/IubJ0kA290mjkTdu', 'admin',        'actif', '2026-09-01 09:00:00'),
 ('Ben Salah', 'Karim',     'karim.tech', 'technicien@parkshare.tn', '22123456', '$2y$10$vkislP5Z406QVJpupvEckO3wleWE4gbECF4XgMiN1BYUljVkaxxkS', 'technicien',   'actif', '2026-09-15 10:30:00'),
