@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/config/config.php';
+require_once __DIR__ . '/utilisateur/config/config.php';
 
 
 ini_set('session.use_strict_mode', '1');    
@@ -37,12 +37,12 @@ header('Cache-Control: no-store');
 
 
 
-require_once __DIR__ . '/app/helpers.php';
+require_once __DIR__ . '/utilisateur/app/helpers.php';
 
 
 spl_autoload_register(function (string $class): void {
     foreach (['Controllers', 'Models'] as $folder) {
-        $file = __DIR__ . '/app/' . $folder . '/' . $class . '.php';
+        $file = __DIR__ . '/utilisateur/app/' . $folder . '/' . $class . '.php';
         if (is_file($file)) {
             require_once $file;
             return;
@@ -57,7 +57,7 @@ AuthController::syncSession();
 
 
 
-$routes = require __DIR__ . '/app/routes.php';
+$routes = require __DIR__ . '/utilisateur/app/routes.php';
 $action = (string) ($_GET['action'] ?? 'home');
 
 if (!isset($routes[$action])) {
