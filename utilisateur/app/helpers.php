@@ -24,7 +24,7 @@ function redirect(string $action, array $params = []): never
 
 function asset(string $path): string
 {
-    return 'app/Views/assets/' . ltrim($path, '/');
+    return 'utilisateur/app/Views/assets/' . ltrim($path, '/');
 }
 
 
