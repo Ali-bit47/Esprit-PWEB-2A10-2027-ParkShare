@@ -1,5 +1,5 @@
-# Apache (XAMPP / WAMP) : seuls index.php et les fichiers statiques (app/Views/assets) sont accessibles.
+# Apache (XAMPP / WAMP) : seuls index.php et les fichiers statiques (utilisateur/app/Views/assets) sont accessibles.
 # Les contrôleurs, vues, configuration et script SQL ne peuvent pas être ouverts directement.
 Options -Indexes
-RedirectMatch 403 ^.*/app/.*\.php$
-RedirectMatch 403 ^.*/(config|database|docs)/.*$
+RedirectMatch 403 ^.*/utilisateur/app/.*\.php$
+RedirectMatch 403 ^.*/utilisateur/(config|database|docs)/.*$
